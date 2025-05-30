@@ -3,7 +3,7 @@
             <x-input-label for="titulo" :value="__('Titulo Vacante')" />
             <x-text-input wire:model="form.titulo" 
             id="titulo" class="block mt-1 w-full" 
-            type="text" name="titulo" :value="old('titulo')"
+            type="text" wire:model="titulo" :value="old('titulo')"
             placeholder="Titulo Vacante"/>
         </div>  
 
@@ -14,7 +14,10 @@
                 name="salario"
                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
             >
-
+                <option>--Seleccione --</option>
+                @foreach ($salarios as $salario )
+                    <option value="{{ $salario-> id }}">{{$salario->salario}}</option>
+                @endforeach
             </select>
         </div>
 
@@ -25,7 +28,10 @@
                 name="categoria"
                 class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
             >
-
+                <option>--Seleccione --</option>
+                @foreach ($categorias as $categoria )
+                    <option value="{{ $salario-> id }}">{{$categoria->categoria}}</option>
+                @endforeach
             </select>
         </div>
 
