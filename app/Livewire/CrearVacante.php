@@ -13,7 +13,7 @@ class CrearVacante extends Component
     public $salario;
     public $categoria;
     public $empresa;
-    public $ultimod_dia;
+    public $ultimo_dia;
     public $descripcion;
     public $imagen;
 
