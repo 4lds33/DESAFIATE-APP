@@ -10,7 +10,7 @@
             placeholder="Título de la Vacante"
         />
         @error('titulo')
-            <p class="text-red-500 text-sm">{{ $message }}</p>
+            <livewire:monstrar-alerta : message="$message" />
         @enderror
     </div>  
 
@@ -28,7 +28,7 @@
 
         </select>
         @error('salario')
-            <p class="text-red-500 text-sm">{{ $message }}</p>
+            <livewire:monstrar-alerta : message="$message" />
         @enderror
     </div>
 
