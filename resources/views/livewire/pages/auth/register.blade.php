@@ -14,6 +14,8 @@ new #[Layout('layouts.guest')] class extends Component
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public string $rol = '';
+
 
     /**
      * Handle an incoming registration request.
@@ -22,11 +24,15 @@ new #[Layout('layouts.guest')] class extends Component
     {
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
-        ]);
+        'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+        'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+        'rol' => ['required', 'in:1,2'], // VALIDACIÓN PARA EL ROL
+     ]);
+
 
         $validated['password'] = Hash::make($validated['password']);
+        $validated['rol'] = $this->rol; // AÑADE ESTA LÍNEA
+
 
         event(new Registered($user = User::create($validated)));
 
@@ -57,10 +63,12 @@ new #[Layout('layouts.guest')] class extends Component
         <div class="mt-4">
             <x-input-label for="rol" :value="__('Que tipo de cuenta desea en DesafiaTE')" />
             <select
+                wire:model="rol"
                 id="rol"
                 name="rol"
-                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
-            >
+            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full"
+        >
+
                 <option value="">-- Seleciona un rol --</option>
                 <option value="1">Alumnos - Competencias</option>
                 <option value="2">Profesor - Publicar Competencias</option>

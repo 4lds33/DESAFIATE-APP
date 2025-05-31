@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Salario;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class VacanteController extends Controller
@@ -20,8 +21,10 @@ class VacanteController extends Controller
      */
     public function create()
     {
-        //
-        return view('vacantes.create');
+        $salarios = Salario::all(); // o el modelo que uses para salarios
+        $categorias = Categoria::all();
+        return view('livewire.crear-vacante', compact('salarios'));
+        return view('livewire.crear-vacante', compact('salarios', 'categorias'));
     }
 
     /**
