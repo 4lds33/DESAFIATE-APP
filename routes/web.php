@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\VacanteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\CrearVacante;
 
 Route::view('/', 'welcome');
 
@@ -12,6 +13,7 @@ Route::get('/dashboard', [VacanteController::class, 'index'])
 Route::get('/vacantes/create', [VacanteController::class, 'create'])
     ->middleware(['auth', 'verified'])
     ->name('vacantes.create');
+
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
