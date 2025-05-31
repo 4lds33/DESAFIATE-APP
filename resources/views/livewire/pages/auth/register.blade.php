@@ -27,7 +27,7 @@ new #[Layout('layouts.guest')] class extends Component
         'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
         'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         'rol' => ['required', 'in:1,2'], // VALIDACIÓN PARA EL ROL
-     ]);
+    ]);
 
 
         $validated['password'] = Hash::make($validated['password']);
@@ -61,7 +61,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         <!-- Email Address -->
         <div class="mt-4">
-            <x-input-label for="rol" :value="__('Que tipo de cuenta desea en DesafiaTE')" />
+            <x-input-label for="rol" :value="__('Que tipo de cuenta desea en EmpleaYA')" />
             <select
                 wire:model="rol"
                 id="rol"
@@ -70,8 +70,8 @@ new #[Layout('layouts.guest')] class extends Component
         >
 
                 <option value="">-- Seleciona un rol --</option>
-                <option value="1">Alumnos - Competencias</option>
-                <option value="2">Profesor - Publicar Competencias</option>
+                <option value="1">Developer - Obtener Empleo</option>
+                <option value="2">Recruiter - Publicar empleo</option>
             </select>
         </div>
 

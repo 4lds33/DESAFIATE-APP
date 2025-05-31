@@ -58,7 +58,6 @@ class CrearVacante extends Component
             'ultimo_dia' => $datos['ultimo_dia'],
             'descripcion' => $datos['descripcion'],
             'imagen' => $datos['imagen'] ?? null,
-            'user_id' => auth()->id(),
         ]);
 
         session()->flash('mensaje', 'Vacante creada correctamente');
